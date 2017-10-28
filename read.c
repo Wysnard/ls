@@ -35,11 +35,11 @@ int	ft_ls(char *flag, char *arg)
 	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
-			inf = (info *)tmp->content;
-			if (dir->d_type == 4 && !ft_strequ(dir->d_name, ".") && !ft_strequ(dir->d_name, ".."))
+			entry = (struct dirent *)tmp->content;
+			if (entry->d_type == 4 && !ft_strequ(entry->d_name, ".") && !ft_strequ(entry->d_name, ".."))
 			{
 				ft_putchar('\n');
-				join = ft_strtrijoin(arg, "/", dir->d_name);
+				join = ft_strtrijoin(arg, "/", entry->d_name);
 				ft_ls(flag, join);
 				free(join);
 			}
