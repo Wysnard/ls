@@ -63,19 +63,20 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_printf("%s\n", inf->dir->d_name);
 		tmp = tmp->next;
 	}
+	tmp = list;
 	if (ft_strchr(flag, 'l'))
 	{
-		ft_total(list);
-		while (list)
+		ft_total(tmp);
+		while (tmp)
 		{
-			inf = (info *)list->content;
+			inf = (info *)tmp->content;
 			ft_filetype(inf->dir);
 			ft_mod(inf);
 			ft_uid(inf->st);
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
 			ft_printf("%s\n", inf->dir->d_name);
-			list = list->next;
+			tmp = tmp->next;
 		}
 	}
 }
