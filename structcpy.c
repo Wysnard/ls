@@ -36,7 +36,7 @@ struct	stat	*statcpy(struct stat *cp)
 	return (st);
 }
 
-info	*createinfo(struct dirent *dir, struct stat st)
+info	*createinfo(struct dirent *dir, struct stat *st)
 {
 	info	*elem;
 
