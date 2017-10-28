@@ -32,8 +32,8 @@ void	ft_getst2(info *inf)
 		lstat(inf->dir->d_name, buf);
 	else
 		stat(inf->dir->d_name, buf);
-	ft_strmod(buf->st_mode, str);
-	ft_printf("%s %d ", str, buf->st_nlink);
+	ft_strmod(inf->st->st_mode, str);
+	ft_printf("%s %d ", str, inf->st->st_nlink);
 }
 
 void	ft_total(t_list	*list)
