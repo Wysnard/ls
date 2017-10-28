@@ -11,7 +11,6 @@ void	ft_filetype(struct dirent *dir)
 
 void	ft_getst(info *inf)
 {
-	char		str[10];
 	struct	stat	*buf;
 
 	if (inf->dir->d_type == 10)
@@ -42,6 +41,7 @@ void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
 	t_list	*tmp;
+	char		str[10];
 
 	tmp = list;
 	while (tmp)
