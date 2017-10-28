@@ -59,7 +59,7 @@ void	ft_printlst(t_list *list, char *flag)
 		while (list)
 		{
 			inf = (info *)list->content;
-			ft_filetype(inf->dir);
+			//ft_filetype(inf->dir);
 			/*ft_strmod(inf->st->st_mode, str);
 			ft_printf("%s %d ", str, inf->st->st_nlink);
 			ft_uid(inf->st);
