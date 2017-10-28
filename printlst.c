@@ -56,7 +56,6 @@ void	ft_printlst(t_list *list, char *flag)
 		if (ft_strchr(flag, 'l'))
 		{
 			ft_getst(inf);
-			//ft_printf("%s\n", inf->dir->d_name);
 		}
 		else
 			ft_printf("%s\n", inf->dir->d_name);
@@ -67,6 +66,8 @@ void	ft_printlst(t_list *list, char *flag)
 		ft_total(list);
 		while (list)
 		{
+			inf = (info *)list->content;
+			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
 	}
