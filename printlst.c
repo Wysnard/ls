@@ -9,7 +9,7 @@ void	ft_filetype(struct dirent *dir)
 	ft_printf("%c", reg[dir->d_type - 1]);
 }
 
-void	ft_getl(info *inf)
+void	ft_getst(info *inf)
 {
 	char		str[10];
 	struct	stat	*buf;
@@ -27,6 +27,23 @@ void	ft_getl(info *inf)
 	ft_printf("%d ", buf->st_size);
 }
 
+void	ft_total(t_list	*list)
+{
+	t_list	*tmp;
+	info	*inf;
+	int	total;
+
+	tmp = list;
+	total = 0;
+	while (tmp)
+	{
+		inf = (info *)tmp->content;
+		total += inf->st_blocks;
+		tmp = tmp->next;
+	}
+	ft_printf("total %d\n", total);
+}
+
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
@@ -38,11 +55,19 @@ void	ft_printlst(t_list *list, char *flag)
 		inf = (info *)tmp->content;
 		if (ft_strchr(flag, 'l'))
 		{
-			ft_getl(inf);
+			ft_getst(inf);
 			//ft_printf("%s\n", inf->dir->d_name);
 		}
 		else
 			ft_printf("%s\n", inf->dir->d_name);
 		tmp = tmp->next;
+	}
+	if (ft_strchr(flag, 'l'))
+	{
+		ft_total(list);
+		while (list)
+		{
+			list = list->next;
+		}
 	}
 }
