@@ -18,7 +18,7 @@ info	*createinfo(struct dirent *dir)
 {
 	info	*elem;
 
-	if (!(elem = malloc(*elem)))
+	if (!(elem = malloc(sizeof(*elem))))
 		exit(EXIT_FAILURE);
 	elem->dir = dir;
 	elem->st = NULL;
