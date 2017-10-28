@@ -14,7 +14,7 @@ int	ft_ls(char *flag, char *arg)
 	while (entry = readdir(dir))
 	{
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry)), sizeof(*entry)));
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), NULL), sizeof(*entry)));
 	}
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
