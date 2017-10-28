@@ -62,6 +62,7 @@ void	ft_printlst(t_list *list, char *flag)
 		{
 			inf = (info *)list->content;
 			ft_filetype(inf->dir);
+			ft_getst(inf);
 			ft_uid(inf->st);
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
