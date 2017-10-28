@@ -30,17 +30,19 @@ void	ft_getl(info *inf)
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
+	t_list	*tmp;
 
-	while (list)
+	tmp = list;
+	while (tmp)
 	{
-		inf = (info *)list->content;
+		inf = (info *)tmp->content;
 		if (ft_strchr(flag, 'l'))
 		{
 			ft_getl(inf);
-			ft_printf("%s\n", inf->dir->d_name);
+			//ft_printf("%s\n", inf->dir->d_name);
 		}
 		else
 			ft_printf("%s\n", inf->dir->d_name);
-		list = list->next;
+		tmp = tmp->next;
 	}
 }
