@@ -30,7 +30,7 @@ int	ft_ls(char *flag, char *arg)
 			{
 				ft_putchar('\n');
 				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
-				//ft_ls(flag, join);
+				ft_ls(flag, join);
 				free(join);
 			}
 			tmp = tmp->next;
