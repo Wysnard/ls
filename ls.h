@@ -8,7 +8,6 @@
 #include <time.h>
 #include <pwd.h>
 #include <grp.h>
-#include <attr/xattr.h>
 
 typedef	struct	info
 {
