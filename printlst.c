@@ -21,8 +21,6 @@ void	ft_getst(info *inf)
 	inf->st = statcpy(buf);
 	ft_strmod(inf->st->st_mode, str);
 	ft_printf("%s %d ", str, inf->st->st_nlink);
-	ft_uid(inf->st);
-	ft_gid(inf->st);
 	ft_printf("%d ", inf->st->st_size);
 }
 
@@ -65,6 +63,8 @@ void	ft_printlst(t_list *list, char *flag)
 		{
 			inf = (info *)list->content;
 			ft_filetype(inf->dir);
+			ft_uid(inf->st);
+			ft_gid(inf->st);
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
