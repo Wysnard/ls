@@ -18,7 +18,7 @@ struct	stat	*statcpy(struct stat *cp)
 {
 	struct	stat	*st;
 
-	if (!(st = malloc(sizeof(*st) * 12)))
+	if (!(st = malloc(sizeof(*st))))
 		exit (EXIT_FAILURE);
 	st->st_dev = cp->st_dev;
 	st->st_ino = cp->st_ino;
