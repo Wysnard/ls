@@ -1,5 +1,16 @@
 #include "ls.h"
 
+struct	stat	*ft_getst(struct dirent *dir)
+{
+	struct	stat	*buf;
+
+	if (dir->d_type == 10)
+		lstat(dir->d_name, buf);
+	else
+		stat(dir->d_name, buf);
+	return (statcpy(buf));
+}
+
 int	ft_ls(char *flag, char *arg)
 {
 	DIR		*dir;
@@ -14,7 +25,7 @@ int	ft_ls(char *flag, char *arg)
 	while (entry = readdir(dir))
 	{
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), NULL), sizeof(*entry)));
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*entry)));
 	}
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);

@@ -9,17 +9,6 @@ void	ft_filetype(struct dirent *dir)
 	ft_printf("%c", reg[dir->d_type - 1]);
 }
 
-void	ft_getst(info *inf)
-{
-	struct	stat	*buf;
-
-	if (inf->dir->d_type == 10)
-		lstat(inf->dir->d_name, buf);
-	else
-		stat(inf->dir->d_name, buf);
-	inf->st = statcpy(buf);
-}
-
 void	ft_mod(info *inf)
 {
 	struct	stat	*buf;
