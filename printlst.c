@@ -48,8 +48,8 @@ void	ft_printlst(t_list *list, char *flag)
 		}
 	else
 	{
-		if (list)
-			ft_total(list);
+		/*if (list)
+			ft_total(list);*/
 		while (list)
 		{
 			inf = (info *)list->content;
