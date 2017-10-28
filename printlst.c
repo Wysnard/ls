@@ -22,8 +22,8 @@ void	ft_getl(info *inf)
 	ft_filetype(inf->dir);
 	ft_strmod(buf->st_mode, str);
 	ft_printf("%s %d ", str, buf->st_nlink);
-	ft_uid(buf);
-	ft_gid(buf);
+	ft_uid(inf->st);
+	ft_gid(inf->st);
 	ft_printf("%d ", buf->st_size);
 }
 
