@@ -69,6 +69,7 @@ void	ft_printlst(t_list *list, char *flag)
 		{
 			entry = (struct dirent *)list->content;
 			ft_filetype(entry);
+			ft_getst(entry);
 			ft_printf("%s\n", entry->d_name);
 			list = list->next;
 		}
