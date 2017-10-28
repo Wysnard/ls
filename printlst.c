@@ -33,12 +33,12 @@ void	ft_printlst(t_list *list, char *flag)
 	while (list)
 	{
 		inf = (info *)list->content;
-		/*if (ft_strchr(flag, 'l'))
+		if (ft_strchr(flag, 'l'))
 		{
-			ft_getl(dir);
-			ft_printf("%s\n", dir->d_name);
+			ft_getl(inf->dir);
+			ft_printf("%s\n", inf->dir->d_name);
 		}
-		else*/
+		else
 			ft_printf("%s\n", inf->dir->d_name);
 		list = list->next;
 	}
