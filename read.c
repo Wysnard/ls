@@ -1,16 +1,5 @@
 #include "ls.h"
 
-struct	stat	*ft_getst(struct dirent *dir)
-{
-	struct	stat	*buf;
-
-	if (dir->d_type == 10)
-		lstat(dir->d_name, buf);
-	else
-		stat(dir->d_name, buf);
-	return (statcpy(buf));
-}
-
 int	ft_ls(char *flag, char *arg)
 {
 	DIR		*dir;
@@ -34,11 +23,11 @@ int	ft_ls(char *flag, char *arg)
 	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
-			inf = (info *)tmp->content;
-			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
+			entry = (struct dirent *)list->content;
+			if (entry->d_type == 4 && !ft_strequ(entry->d_name, ".") && !ft_strequ(entry->d_name, ".."))
 			{
 				ft_putchar('\n');
-				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
+				join = ft_strtrijoin(arg, "/", entry->d_name);
 				ft_ls(flag, join);
 				free(join);
 			}
