@@ -23,17 +23,17 @@ int	ft_ls(char *flag, char *arg)
 	ft_printlst(list, flag);
 	tmp = list;
 	if (ft_strchr(flag, 'R'))
-		while (list)
+		while (tmp)
 		{
-			inf = (info *)list->content;
-			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
+			inf = (info *)tmp->content;
+			if (inf->dir && inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
 				ft_putchar('\n');
 				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
 				ft_ls(flag, join);
 				free(join);
 			}
-			list = list->next;
+			tmp = tmp->next;
 		}
 	if (list)
 		ft_alstdel(list);
