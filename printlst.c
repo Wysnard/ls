@@ -37,14 +37,14 @@ void	ft_total(t_list	*list)
 
 void	ft_printlst(t_list *list, char *flag)
 {
-	info	*inf;
+	struct	dirent	*dir;
 	t_list	*tmp;
 
 	tmp = list;
 	while (tmp)
 	{
-		inf = (info *)tmp->content;
-		ft_printf("%s\n", inf->dir->d_name);
+		dir = (struct dirent *)tmp->content;
+		ft_printf("%s\n", dir->d_name);
 		tmp = tmp->next;
 	}
 }
