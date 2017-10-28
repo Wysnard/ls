@@ -12,8 +12,9 @@ void	ft_filetype(struct dirent *dir)
 void	ft_getst(info *inf)
 {
 	struct	stat	*buf;
-	char		str[10];
+	char		*str;
 
+	str = ft_strnew(10);
 	if (inf->dir->d_type == 10)
 		lstat(inf->dir->d_name, buf);
 	else
