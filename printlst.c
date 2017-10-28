@@ -35,7 +35,7 @@ void	ft_printlst(t_list *list, char *flag)
 		inf = (info *)list->content;
 		if (ft_strchr(flag, 'l'))
 		{
-			ft_getl(inf->dir);
+			ft_getl(inf);
 			ft_printf("%s\n", inf->dir->d_name);
 		}
 		else
