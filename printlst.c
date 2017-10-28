@@ -41,16 +41,14 @@ void	ft_printlst(t_list *list, char *flag)
 	t_list	*tmp;
 
 	tmp = list;
-	while (tmp)
-	{
-		inf = (info *)tmp->content;
-		if (ft_strchr(flag, 'l'))
-			ft_getst(inf);
-		else
+	if (!ft_strchr(flag, 'l'))
+		while (tmp)
+		{
+			inf = (info *)tmp->content;
 			ft_printf("%s\n", inf->dir->d_name);
-		tmp = tmp->next;
-	}
-	if (ft_strchr(flag, 'l'))
+			tmp = tmp->next;
+		}
+	else
 	{
 		ft_total(list);
 		while (list)
