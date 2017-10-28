@@ -46,7 +46,7 @@ void	ft_getst(struct dirent *dir)
 	//ft_mod(inf);
 	//ft_uid(buf);
 	//ft_gid(buf);
-	ft_printf("%d ", buf->st_size);
+	//ft_printf("%d ", buf->st_size);
 }
 
 void	ft_printlst(t_list *list, char *flag)
