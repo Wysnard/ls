@@ -4,6 +4,7 @@ void	ft_strmod(mode_t mode, char *buf)
 {
 	char	chars[10];
 	int		i;
+	char	*mod;
 
 	i = 0 ;
 	ft_strcpy(chars, "rwxrwxrwx");
