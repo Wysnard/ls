@@ -40,11 +40,18 @@ void	ft_total(t_list	*list)
 	ft_printf("total %u\n", total);
 }
 
+void ft_mod(info *inf)
+{
+	char		str[10];
+
+	ft_strmod(inf->st->st_mode, str);
+	ft_printf("%s %d ", str, inf->st->st_nlink);
+}
+
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
 	t_list	*tmp;
-	char		str[10];
 
 	tmp = list;
 	while (tmp)
@@ -63,8 +70,7 @@ void	ft_printlst(t_list *list, char *flag)
 		{
 			inf = (info *)list->content;
 			ft_filetype(inf->dir);
-			ft_strmod(inf->st->st_mode, str);
-			ft_printf("%s %d ", str, inf->st->st_nlink);
+			ft_mod(inf);
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
