@@ -13,3 +13,14 @@ struct	dirent	*direntcpy(struct dirent *dir)
 	ft_strcpy(cpy->d_name ,dir->d_name);
 	return (cpy);
 }
+
+info	*createinfo(struct dirent *dir)
+{
+	info	*elem;
+
+	if (!(elem = malloc(*elem)))
+		exit(EXIT_FAILURE);
+	elem->dir = dir;
+	elem->st = NULL;
+	return (elem);
+}

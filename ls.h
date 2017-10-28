@@ -12,8 +12,7 @@
 typedef	struct	info
 {
 	struct	dirent	*dir;
-	struct	passwd	*user;
-	struct	group	*grp;
+	struct	stat	*st;
 }								info;
 
 int		ft_ls(char *flag, char *arg);
