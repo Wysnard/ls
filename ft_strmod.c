@@ -2,7 +2,7 @@
 
 void	ft_strmod(mode_t mode, char *buf)
 {
-	char	chars[11];
+	char	chars[10];
 	int		i;
 
 	i = 0 ;
