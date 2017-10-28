@@ -15,13 +15,14 @@ typedef	struct	info
 	struct	stat	*st;
 }								info;
 
-int		ft_ls(char *flag, char *arg);
+int			ft_ls(char *flag, char *arg);
 struct	dirent	*direntcpy(struct dirent *dir);
 void		ft_printlst(t_list *list, char *flag);
 void		ft_alstdel(t_list *list);
 void		ft_uid(struct stat *buf);
 void		ft_gid(struct stat *buf);
 void		ft_strmod(mode_t mode, char *buf);
-info	*createinfo(struct dirent *dir);
+info		*createinfo(struct dirent *dir);
+struct	stat	*statcpy(struct stat *cp);
 
 #endif

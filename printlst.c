@@ -18,6 +18,7 @@ void	ft_getl(info *inf)
 		lstat(inf->dir->d_name, buf);
 	else
 		stat(inf->dir->d_name, buf);
+	inf->st = statcpy(buf);
 	ft_filetype(inf->dir);
 	ft_strmod(buf->st_mode, str);
 	ft_printf("%s %d ", str, buf->st_nlink);
