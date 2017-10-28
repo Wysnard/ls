@@ -15,9 +15,9 @@ void	ft_getl(info *inf)
 	//struct	stat	*buf;
 
 	if (dir->d_type == 10)
-		lstat(dir->d_name, inf->st);
+		lstat(inf->dir->d_name, inf->st);
 	else
-		stat(dir->d_name, inf->st);
+		stat(inf->dir->d_name, inf->st);
 	ft_filetype(inf->dir);
 	ft_strmod(inf->st->st_mode, str);
 	ft_printf("%s %d ", str, inf->st->st_nlink);
