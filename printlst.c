@@ -11,6 +11,7 @@ void	ft_filetype(struct dirent *dir)
 
 void	ft_getst(info *inf)
 {
+	char		str[10];
 	struct	stat	*buf;
 
 	if (inf->dir->d_type == 10)
@@ -18,12 +19,6 @@ void	ft_getst(info *inf)
 	else
 		stat(inf->dir->d_name, buf);
 	inf->st = statcpy(buf);
-}
-
-void	ft_printst(info *inf)
-{
-	char		str[10];
-
 	ft_filetype(inf->dir);
 	ft_strmod(inf->st->st_mode, str);
 	ft_printf("%s %d ", str, inf->st->st_nlink);
@@ -59,7 +54,9 @@ void	ft_printlst(t_list *list, char *flag)
 	{
 		inf = (info *)tmp->content;
 		if (ft_strchr(flag, 'l'))
+		{
 			ft_getst(inf);
+		}
 		else
 			ft_printf("%s\n", inf->dir->d_name);
 		tmp = tmp->next;
@@ -70,7 +67,6 @@ void	ft_printlst(t_list *list, char *flag)
 		while (list)
 		{
 			inf = (info *)list->content;
-			ft_printst(inf);
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
