@@ -21,6 +21,7 @@ void	ft_getst(info *inf)
 		stat(inf->dir->d_name, buf);
 	inf->st = statcpy(buf);
 	ft_strmod(inf->st->st_mode, str);
+	free(str);
 	//ft_printf("%s %d ", str, inf->st->st_nlink);
 }
 
