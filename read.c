@@ -6,6 +6,7 @@ int	ft_ls(char *flag, char *arg)
 	struct	dirent	*entry;
 	t_list		*list;
 	t_list		*tmp;
+	info		*inf;
 	char		*join;
 
 	list = NULL;
@@ -20,21 +21,21 @@ int	ft_ls(char *flag, char *arg)
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
 	ft_printlst(list, flag);
-	/*tmp = list;
+	tmp = list;
 	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
-			entry = (struct dirent *)tmp->content;
-			if (entry->d_type == 4 && !ft_strequ(entry->d_name, ".") && !ft_strequ(entry->d_name, ".."))
+			inf = (info *)tmp->content;
+			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
 				ft_putchar('\n');
 				join = ft_strjoin(arg, "/");
-				join = ft_strjoin(join, entry->d_name);
+				join = ft_strjoin(join, inf->dir->d_name);
 				ft_ls(flag, join);
 				free(join);
 			}
 			tmp = tmp->next;
-		}*/
+		}
 	if (list)
 		ft_alstdel(list);
 	return (1);
