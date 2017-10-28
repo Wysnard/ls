@@ -22,7 +22,7 @@ void		ft_alstdel(t_list *list);
 void		ft_uid(struct stat *buf);
 void		ft_gid(struct stat *buf);
 void		ft_strmod(mode_t mode, char *buf);
-info	*createinfo(struct dirent *dir, struct stat st);
+info	*createinfo(struct dirent *dir, struct stat *st);
 struct	stat	*statcpy(struct stat *cp);
 
 #endif
