@@ -14,7 +14,7 @@ void	ft_getl(info *inf)
 	char		str[10];
 	//struct	stat	*buf;
 
-	if (dir->d_type == 10)
+	if (inf->dir->d_type == 10)
 		lstat(inf->dir->d_name, inf->st);
 	else
 		stat(inf->dir->d_name, inf->st);
