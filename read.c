@@ -17,7 +17,6 @@ int	ft_ls(char *flag, char *arg)
 	struct	dirent	*entry;
 	t_list		*list;
 	t_list		*tmp;
-	info		*inf;
 	char		*join;
 
 	list = NULL;
@@ -32,20 +31,20 @@ int	ft_ls(char *flag, char *arg)
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
 	ft_printlst(list, flag);
-	//tmp = list;
-	/*if (ft_strchr(flag, 'R'))
+	tmp = list;
+	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
 			inf = (info *)tmp->content;
-			if (inf && inf->dir && inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
+			if (dir->d_type == 4 && !ft_strequ(dir->d_name, ".") && !ft_strequ(dir->d_name, ".."))
 			{
 				ft_putchar('\n');
-				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
+				join = ft_strtrijoin(arg, "/", dir->d_name);
 				ft_ls(flag, join);
 				free(join);
 			}
 			tmp = tmp->next;
-		}*/
+		}
 	if (list)
 		ft_alstdel(list);
 	return (1);
