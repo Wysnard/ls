@@ -26,7 +26,7 @@ int	ft_ls(char *flag, char *arg)
 		while (tmp)
 		{
 			inf = (info *)tmp->content;
-			if (inf->dir && inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
+			if (inf && inf->dir && inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
 				ft_putchar('\n');
 				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
