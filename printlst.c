@@ -9,37 +9,6 @@ void	ft_filetype(struct dirent *dir)
 	ft_printf("%c", reg[dir->d_type - 1]);
 }
 
-void	ft_strmod(mode_t mode, char *buf)
-{
-	char	chars[10];
-	int		i;
-
-	i = 0 ;
-	ft_strcpy(chars, "rwxrwxrwx");
-	while (i < 9)
-	{
-		buf[i] = (mode & (1 << (8-i))) ? chars[i] : '-';
-		i++;
-	}
-	buf[9] = '\0';
-}
-
-void	ft_uid(struct stat *buf)
-{
-	struct	passwd	*user;
-
-	user = getpwuid(buf->st_uid);
-	ft_printf("%s ", user->pw_name);
-}
-
-void	ft_gid(struct stat *buf)
-{
-	struct	group	*grp;
-
-	grp = getgrgid(buf->st_gid);
-	ft_printf("%s ", grp->gr_name);
-}
-
 void	ft_getl(struct dirent *dir)
 {
 	char		str[10];

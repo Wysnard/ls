@@ -9,15 +9,19 @@
 #include <pwd.h>
 #include <grp.h>
 
-typedef	struct	file
+typedef	struct	info
 {
-	char	flag[6];
-	t_list	*pile;
-}		file;
+	struct	dirent	*dir;
+	struct	passwd	*user;
+	struct	group	*grp;
+}								info;
 
 int		ft_ls(char *flag, char *arg);
 struct	dirent	*direntcpy(struct dirent *dir);
 void		ft_printlst(t_list *list, char *flag);
 void		ft_alstdel(t_list *list);
+void		ft_uid(struct stat *buf);
+void		ft_gid(struct stat *buf);
+void		ft_strmod(mode_t mode, char *buf);
 
 #endif
