@@ -15,10 +15,10 @@ int	ft_ls(char *flag, char *arg)
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
 			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry)), sizeof(*entry)));
 	}
-	/*if (ft_strchr(flag, 'R'))
+	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
-		ft_lstrev(&list);*/
+		ft_lstrev(&list);
 	ft_printlst(list, flag);
 	/*tmp = list;
 	if (ft_strchr(flag, 'R'))

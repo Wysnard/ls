@@ -9,21 +9,21 @@ void	ft_filetype(struct dirent *dir)
 	ft_printf("%c", reg[dir->d_type - 1]);
 }
 
-void	ft_getl(struct dirent *dir)
+void	ft_getl(info *inf)
 {
 	char		str[10];
-	struct	stat	*buf;
+	//struct	stat	*buf;
 
 	if (dir->d_type == 10)
-		lstat(dir->d_name, buf);
+		lstat(dir->d_name, inf->st);
 	else
-		stat(dir->d_name, buf);
-	ft_filetype(dir);
-	ft_strmod(buf->st_mode, str);
-	ft_printf("%s %d ", str, buf->st_nlink);
-	ft_uid(buf);
-	ft_gid(buf);
-	ft_printf("%d ", buf->st_size);
+		stat(dir->d_name, inf->st);
+	ft_filetype(inf->dir);
+	ft_strmod(inf->st->st_mode, str);
+	ft_printf("%s %d ", str, inf->st->st_nlink);
+	ft_uid(inf->st);
+	ft_gid(inf->st);
+	ft_printf("%d ", inf->st->st_size);
 }
 
 void	ft_printlst(t_list *list, char *flag)
