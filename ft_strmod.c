@@ -1,10 +1,9 @@
 #include "ls.h"
 
-void	ft_strmod(mode_t mode)
+void	ft_strmod(mode_t mode, char *buf)
 {
 	char	chars[10];
 	int		i;
-	char	buf[10];
 
 	i = 0 ;
 	ft_strcpy(chars, "rwxrwxrwx");
@@ -14,5 +13,4 @@ void	ft_strmod(mode_t mode)
 		i++;
 	}
 	buf[9] = '\0';
-	ft_printf("%s ", buf);
 }
