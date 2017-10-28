@@ -23,9 +23,9 @@ int	ft_ls(char *flag, char *arg)
 	ft_printlst(list, flag);
 	tmp = list;
 	if (ft_strchr(flag, 'R'))
-		while (tmp)
+		while (list)
 		{
-			inf = (info *)tmp->content;
+			inf = (info *)list->content;
 			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
 				ft_putchar('\n');
@@ -33,7 +33,7 @@ int	ft_ls(char *flag, char *arg)
 				ft_ls(flag, join);
 				free(join);
 			}
-			tmp = tmp->next;
+			list = list->next;
 		}
 	if (list)
 		ft_alstdel(list);
