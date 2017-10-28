@@ -32,7 +32,7 @@ int	ft_ls(char *flag, char *arg)
 				join = ft_strjoin(arg, "/");
 				join = ft_strjoin(join, inf->dir->d_name);
 				ft_ls(flag, join);
-				free(join);
+				//free(join);
 			}
 			tmp = tmp->next;
 		}
