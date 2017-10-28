@@ -21,7 +21,7 @@ void		ft_printlst(t_list *list, char *flag);
 void		ft_alstdel(t_list *list);
 void		ft_uid(struct stat *buf);
 void		ft_gid(struct stat *buf);
-void		ft_strmod(mode_t mode, char *buf);
+void		ft_strmod(mode_t mode);
 info		*createinfo(struct dirent *dir);
 struct	stat	*statcpy(struct stat *cp);
 
