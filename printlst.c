@@ -38,7 +38,7 @@ void	ft_total(t_list	*list)
 	while (tmp)
 	{
 		inf = (info *)tmp->content;
-		total += inf->st->st_blocks;
+		total += inf->st->st_blksize;
 		tmp = tmp->next;
 	}
 	ft_printf("total %d\n", total);
