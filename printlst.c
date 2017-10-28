@@ -38,18 +38,19 @@ void	ft_total(t_list	*list)
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
+	struct	dirent	*entry;
 
 	if (!ft_strchr(flag, 'l'))
 		while (list)
 		{
-			inf = (info *)list->content;
-			ft_printf("%s\n", inf->dir->d_name);
+			entry = (struct dirent *)list->content;
+			ft_printf("%s\n", entry->d_name);
 			list = list->next;
 		}
 	else
 	{
-		if (list)
-			ft_total(list);
+		/*if (list)
+			ft_total(list);*/
 		while (list)
 		{
 			inf = (info *)list->content;
