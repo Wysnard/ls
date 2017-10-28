@@ -12,17 +12,15 @@ void	ft_filetype(struct dirent *dir)
 void	ft_getst(info *inf)
 {
 	struct	stat	*buf;
-	char		*str;
+	char		str[10];
 
-	str = ft_strnew(10);
 	if (inf->dir->d_type == 10)
 		lstat(inf->dir->d_name, buf);
 	else
 		stat(inf->dir->d_name, buf);
 	inf->st = statcpy(buf);
 	ft_strmod(inf->st->st_mode, str);
-	free(str);
-	//ft_printf("%s %d ", str, inf->st->st_nlink);
+	ft_printf("%s %d ", str, inf->st->st_nlink);
 }
 
 void	ft_total(t_list	*list)
