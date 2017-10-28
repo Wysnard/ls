@@ -18,9 +18,9 @@ int	ft_ls(char *flag, char *arg)
 	/*if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
-		ft_lstrev(&list);
+		ft_lstrev(&list);*/
 	ft_printlst(list, flag);
-	tmp = list;
+	/*tmp = list;
 	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{

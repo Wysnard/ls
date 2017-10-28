@@ -28,18 +28,18 @@ void	ft_getl(struct dirent *dir)
 
 void	ft_printlst(t_list *list, char *flag)
 {
-	struct	dirent	*dir;
+	info	*inf;
 
 	while (list)
 	{
-		dir = (struct dirent *)list->content;
-		if (ft_strchr(flag, 'l'))
+		inf = (info *)list->content;
+		/*if (ft_strchr(flag, 'l'))
 		{
 			ft_getl(dir);
 			ft_printf("%s\n", dir->d_name);
 		}
-		else
-			ft_printf("%s\n", dir->d_name);
+		else*/
+			ft_printf("%s\n", inf->dir->d_name);
 		list = list->next;
 	}
 }
