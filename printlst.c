@@ -38,30 +38,28 @@ void	ft_total(t_list	*list)
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
-	t_list	*tmp;
 
-	tmp = list;
 	if (!ft_strchr(flag, 'l'))
-		while (tmp)
+		while (list)
 		{
-			inf = (info *)tmp->content;
+			inf = (info *)list->content;
 			ft_printf("%s\n", inf->dir->d_name);
-			tmp = tmp->next;
+			list = list->next;
 		}
 	else
 	{
-		if (tmp)
-			ft_total(tmp);
-		while (tmp)
+		if (list)
+			ft_total(list);
+		while (list)
 		{
-			inf = (info *)tmp->content;
+			inf = (info *)list->content;
 			ft_filetype(inf->dir);
 			//ft_mod(inf);
 			ft_uid(inf->st);
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
 			ft_printf("%s\n", inf->dir->d_name);
-			tmp = tmp->next;
+			list = list->next;
 		}
 	}
 }
