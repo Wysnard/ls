@@ -1,5 +1,16 @@
 #include "ls.h"
 
+struct	stat	*ft_getst(struct dirent *entry)
+{
+	struct	stat	*buf;
+
+	if (entry->d_type == 10)
+		lstat(entry->d_name, buf);
+	else
+		stat(entry->d_name, buf);
+	return (statcpy(buf));
+}
+
 int	ft_ls(char *flag, char *arg)
 {
 	DIR		*dir;
@@ -14,15 +25,20 @@ int	ft_ls(char *flag, char *arg)
 	while (entry = readdir(dir))
 	{
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry)), sizeof(*entry)));
+		{
+			if (ft_strchr(flag, 'R'))
+				ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*inf)));
+			else
+				ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), NULL), sizeof(*inf)));
+			}
 	}
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
 	ft_printlst(list, flag);
-	tmp = list;
-	if (ft_strchr(flag, 'R'))
+	//tmp = list;
+	/*if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
 			inf = (info *)tmp->content;
@@ -34,7 +50,7 @@ int	ft_ls(char *flag, char *arg)
 				free(join);
 			}
 			tmp = tmp->next;
-		}
+		}*/
 	if (list)
 		ft_alstdel(list);
 	return (1);
