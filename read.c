@@ -2,7 +2,7 @@
 
 void	ft_openerr(DIR *dir)
 {
-	if (dir == EACCES)
+	if (EACCES)
 		perror("ls: cannot open directory");
 }
 
