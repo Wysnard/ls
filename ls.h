@@ -9,6 +9,7 @@
 #include <pwd.h>
 #include <grp.h>
 #include <errno.h>
+#include <stdio.h>
 
 typedef	struct	info
 {
