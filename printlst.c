@@ -19,31 +19,6 @@ void	ft_filetype(struct dirent *dir)
 		ft_putchar('s');
 }
 
-void	ft_mod(struct stat *buf)
-{
-	char		str[10];
-
-	ft_strmod(buf->st_mode, str);
-	ft_printf("%s %d ", str, buf->st_nlink);
-}
-
-void	ft_total(t_list	*list)
-{
-	t_list	*tmp;
-	info	*inf;
-	unsigned int	total;
-
-	tmp = list;
-	total = 0;
-	while (tmp)
-	{
-		inf = (info *)tmp->content;
-		total += inf->st->st_blocks;
-		tmp = tmp->next;
-	}
-	ft_printf("total %u\n", total);
-}
-
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
@@ -68,7 +43,7 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_uid(inf->st);
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
-			ft_printf("%.13s ", &ctime(&inf->st->st_mtime)[3]);
+			ft_printf("%.13s ", &ctime(&inf->st->st_mtime)[4]);
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}

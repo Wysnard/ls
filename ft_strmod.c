@@ -14,3 +14,11 @@ void	ft_strmod(mode_t mode, char *buf)
 	}
 	buf[9] = '\0';
 }
+
+void	ft_mod(struct stat *buf)
+{
+	char		str[10];
+
+	ft_strmod(buf->st_mode, str);
+	ft_printf("%s %d ", str, buf->st_nlink);
+}
