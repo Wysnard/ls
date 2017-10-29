@@ -40,9 +40,9 @@ int	ft_ls(char *flag, char *arg)
 			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
 				ft_putchar('\n');
-				/*join = ft_strtrijoin(arg, "/", inf->dir->d_name);
+				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
 				ft_ls(flag, join);
-				free(join);*/
+				free(join);
 			}
 			tmp = tmp->next;
 		}
