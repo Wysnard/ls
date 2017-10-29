@@ -96,5 +96,6 @@ void	ft_putwchar(wchar_t chr);
 void	ft_putwstr(wchar_t const *str);
 intmax_t	ft_atoim(const char *str);
 char	*ft_strtrijoin(char *s1, char *s2, char *s3);
+int	ft_intlen(int nb, int base);
 
 #endif
