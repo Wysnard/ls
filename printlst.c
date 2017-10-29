@@ -58,5 +58,5 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
-	}s
+	}
 }
