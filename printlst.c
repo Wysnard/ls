@@ -43,21 +43,20 @@ void	ft_printlst(t_list *list, char *flag)
 		while (list)
 		{
 			inf = (info *)list->content;
+			ft_printf("%s\n", inf->dir->d_name);
+			list = list->next;
+		}
+	else
+	{
+		/*if (list)
+			ft_total(list);*/
+		while (list)
+		{
+			inf = (info *)list->content;
+			ft_filetype(inf->dir);
 			ft_printf("%d ", inf->st->st_size);
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
-	/*else
-	{
-		if (list)
-			ft_total(list);
-		while (list)
-		{
-			entry = (struct dirent *)list->content;
-			ft_filetype(entry);
-			//ft_getst(entry);
-			ft_printf("%s\n", entry->d_name);
-			list = list->next;
-		}
-	}*/
+	}s
 }
