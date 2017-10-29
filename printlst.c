@@ -9,13 +9,12 @@ void	ft_filetype(struct dirent *dir)
 	ft_printf("%c", reg[dir->d_type - 1]);
 }
 
-void	ft_mod(info *inf)
+void	ft_mod(struct stat *buf)
 {
-	struct	stat	*buf;
 	char		str[10];
 
-	ft_strmod(inf->st->st_mode, str);
-	ft_printf("%s %d ", str, inf->st->st_nlink);
+	ft_strmod(buf->st_mode, str);
+	ft_printf("%s %d ", str, buf->st_nlink);
 }
 
 void	ft_total(t_list	*list)
