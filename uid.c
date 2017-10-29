@@ -6,6 +6,4 @@ void	ft_uid(struct stat *buf)
 
 	user = getpwuid(buf->st_uid);
 	ft_printf("%s ", user->pw_name);
-	ft_printf("%s ", user->pw_dir);
-	ft_printf("%s ", user->pw_shell);
 }
