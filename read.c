@@ -1,5 +1,11 @@
 #include "ls.h"
 
+void	ft_openerr(DIR *dir)
+{
+	if (dir == EACCES)
+		perror("ls: cannot open directory");
+}
+
 struct	stat	*ft_getst(struct dirent *dir)
 {
 	struct	stat	*buf;
@@ -24,7 +30,7 @@ int	ft_ls(char *flag, char *arg)
 
 	list = NULL;
 	if (!(dir = opendir(arg)))
-		perror("ls: cannot open directory");
+		ft_openerr(dir);
 	else
 	{
 		while (entry = readdir(dir))
