@@ -3,10 +3,20 @@
 
 void	ft_filetype(struct dirent *dir)
 {
-	char	reg[13];
-
-	ft_strcpy(reg, "dddd-----l--");
-	ft_printf("%c", reg[dir->d_type - 1]);
+	if (dir->d_type == DT_REG)
+		ft_putchar('-');
+	else if (dir->d_type == DT_BLK)
+		ft_putchar('b');
+	else if (dir->d_type == DT_CHR)
+		ft_putchar('c');
+	else if (dir->d_type == DT_DIR)
+		ft_putchar('d');
+	else if (dir->d_type == DT_FIFO)
+		ft_putchar('p');
+	else if (dir->d_type == DT_LNK)
+		ft_putchar('l');
+	else if (dir->d_type == DT_SOCK)
+		ft_putchar('s');
 }
 
 void	ft_mod(struct stat *buf)
