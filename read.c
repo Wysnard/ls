@@ -50,8 +50,8 @@ int	ft_ls(char *flag, char *arg)
 				}
 				tmp = tmp->next;
 			}
-		//if (list)
-			//ft_alstdel(list);
+		if (list)
+			ft_alstdel(list);
 		}
 	return (1);
 }
