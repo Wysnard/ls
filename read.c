@@ -1,11 +1,5 @@
 #include "ls.h"
 
-void	ft_openerr(DIR *dir)
-{
-	if (EACCES)
-		perror("ls: cannot open directory");
-}
-
 struct	stat	*ft_getst(struct dirent *dir)
 {
 	struct	stat	*buf;
@@ -30,7 +24,7 @@ int	ft_ls(char *flag, char *arg)
 
 	list = NULL;
 	if (!(dir = opendir(arg)))
-		ft_openerr(dir);
+		perror("ls: cannot open directory");
 	else
 	{
 		while (entry = readdir(dir))
@@ -52,12 +46,12 @@ int	ft_ls(char *flag, char *arg)
 					ft_putchar('\n');
 					join = ft_strtrijoin(arg, "/", inf->dir->d_name);
 					ft_ls(flag, join);
-					free(join);
+					//free(join);
 				}
 				tmp = tmp->next;
 			}
-		if (list)
-			ft_alstdel(list);
+		//if (list)
+			//ft_alstdel(list);
 		}
 	return (1);
 }

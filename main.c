@@ -15,7 +15,7 @@ int	main(int argc, char **argv)
 		if (argv[i][0] == '-')
 			ft_strcat(flag, &argv[i][1]);
 		else
-			ft_lstpushadd(&wait, ft_lstnew(ft_strdup(argv[i]), sizeof(argv[i])));	
+			ft_lstpushadd(&wait, ft_lstnew(ft_strdup(argv[i]), sizeof(argv[i])));
 		i++;
 	}
 	if (!wait)
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 			ft_printf("%s:\n", wait->content);
 		ft_ls(flag, wait->content);
 		wait = wait->next;
-		if (!ft_strchr(flag, 'R'))
+		if (wait)
 			ft_printf("\n");
 	}
 	return (0);
