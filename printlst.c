@@ -68,6 +68,7 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_uid(inf->st);
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
+			ft_printf("%s ", ctime(&inf->st->st_mtime));
 			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
