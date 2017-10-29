@@ -42,10 +42,10 @@ void	ft_getst(struct dirent *dir)
 		lstat(dir->d_name, buf);
 	else
 		stat(dir->d_name, buf);
-	ft_mod(buf);
+	//ft_mod(buf);
 	//ft_uid(buf);
 	//ft_gid(buf);
-	//ft_printf("%d ", buf->st_size);
+	ft_printf("%d ", buf->st_size);
 }
 
 void	ft_printlst(t_list *list, char *flag)
