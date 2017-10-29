@@ -19,6 +19,21 @@ void	ft_filetype(struct dirent *dir)
 		ft_putchar('s');
 }
 
+void	ft_printfcontent(info *inf)
+{
+	char	buf[256];
+	int	ret;
+
+	ft_printf("%s", inf->dir->d_name);
+	if (inf->dir->d_type == DT_LNK)
+	{
+		ret = readlink(inf->dir->d_name, buf, 255);
+		buf[ret] = '\0';
+		ft_printf(" -> %s", buf);
+	}
+	ft_putchar('\n');
+}
+
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
