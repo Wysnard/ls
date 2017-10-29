@@ -43,7 +43,7 @@ void	ft_printlst(t_list *list, char *flag)
 		while (list)
 		{
 			inf = (info *)list->content;
-			ft_printfcontent(inf);
+			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
 	else
@@ -59,7 +59,7 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_gid(inf->st);
 			ft_printf("%d ", inf->st->st_size);
 			ft_printf("%.13s ", &ctime(&inf->st->st_mtime)[4]);
-			ft_printf("%s\n", inf->dir->d_name);
+			ft_printfcontent(inf);
 			list = list->next;
 		}
 	}
