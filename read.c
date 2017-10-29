@@ -24,34 +24,34 @@ int	ft_ls(char *flag, char *arg)
 
 	list = NULL;
 	if (!(dir = opendir(arg)))
-		perror("ls: cannot open directory");
-	else
 	{
-		while (entry = readdir(dir))
-			if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-				ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*inf)));
-		closedir(dir);
-		if (ft_strchr(flag, 'R'))
-			ft_printf("%s:\n", arg);
-		if (ft_strchr(flag, 'r'))
-			ft_lstrev(&list);
-		ft_printlst(list, flag);
-		tmp = list;
-		if (ft_strchr(flag, 'R'))
-			while (tmp)
+		perror("ls: cannot open directory");
+		return (0);
+	}
+	while (entry = readdir(dir))
+		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*inf)));
+	closedir(dir);
+	if (ft_strchr(flag, 'R'))
+		ft_printf("%s:\n", arg);
+	if (ft_strchr(flag, 'r'))
+		ft_lstrev(&list);
+	ft_printlst(list, flag);
+	tmp = list;
+	if (ft_strchr(flag, 'R'))
+		while (tmp)
+		{
+			inf = (info *)tmp->content;
+			if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 			{
-				inf = (info *)tmp->content;
-				if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
-				{
-					ft_putchar('\n');
-					join = ft_strtrijoin(arg, "/", inf->dir->d_name);
-					ft_ls(flag, join);
-					free(join);
-				}
-				tmp = tmp->next;
+				ft_putchar('\n');
+				join = ft_strtrijoin(arg, "/", inf->dir->d_name);
+				ft_ls(flag, join);
+				free(join);
 			}
-		//if (list)
-			//ft_alstdel(list);
+			tmp = tmp->next;
 		}
+	//if (list)
+		//ft_alstdel(list);
 	return (1);
 }
