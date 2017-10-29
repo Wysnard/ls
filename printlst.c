@@ -43,7 +43,7 @@ void	ft_printlst(t_list *list, char *flag)
 		while (list)
 		{
 			inf = (info *)list->content;
-			ft_printf("%s\n", inf->dir->d_name);
+			ft_printfcontent(inf);
 			list = list->next;
 		}
 	else
