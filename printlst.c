@@ -43,8 +43,8 @@ void	ft_getst(struct dirent *dir)
 		lstat(dir->d_name, buf);
 	else
 		stat(dir->d_name, buf);
-	//ft_mod(inf);
-	ft_uid(buf);
+	ft_mod(inf);
+	//ft_uid(buf);
 	//ft_gid(buf);
 	//ft_printf("%d ", buf->st_size);
 }
