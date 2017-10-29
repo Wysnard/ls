@@ -34,20 +34,6 @@ void	ft_total(t_list	*list)
 	ft_printf("total %u\n", total);
 }
 
-void	ft_getst(struct dirent *dir)
-{
-	struct	stat	*buf;
-
-	if (dir->d_type == 10)
-		lstat(dir->d_name, buf);
-	else
-		stat(dir->d_name, buf);
-	//ft_mod(buf);
-	//ft_uid(buf);
-	//ft_gid(buf);
-	ft_printf("%d ", buf->st_size);
-}
-
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
@@ -56,21 +42,21 @@ void	ft_printlst(t_list *list, char *flag)
 	if (!ft_strchr(flag, 'l'))
 		while (list)
 		{
-			entry = (struct dirent *)list->content;
-			ft_printf("%s\n", entry->d_name);
+			inf = (info *)list->content;
+			ft_printf("%s\n", inf->dir->d_name);
 			list = list->next;
 		}
-	else
+	/*else
 	{
-		/*if (list)
-			ft_total(list);*/
+		if (list)
+			ft_total(list);
 		while (list)
 		{
 			entry = (struct dirent *)list->content;
 			ft_filetype(entry);
-			ft_getst(entry);
+			//ft_getst(entry);
 			ft_printf("%s\n", entry->d_name);
 			list = list->next;
 		}
-	}
+	}*/
 }

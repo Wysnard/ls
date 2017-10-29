@@ -1,5 +1,19 @@
 #include "ls.h"
 
+struct	stat	*ft_getst(struct dirent *dir)
+{
+	struct	stat	*buf;
+
+	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
+		exit (EXIT_FAILURE);
+	if (dir->d_type == 10)
+		lstat(dir->d_name, buf);
+	else
+		stat(dir->d_name, buf);
+	//ft_printf("%d ", buf->st_size);
+	return (buf);
+}
+
 int	ft_ls(char *flag, char *arg)
 {
 	DIR		*dir;
@@ -13,13 +27,13 @@ int	ft_ls(char *flag, char *arg)
 	dir = opendir(arg);
 	while (entry = readdir(dir))
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(direntcpy(entry), sizeof(*entry)));
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*inf)));
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
 	ft_printlst(list, flag);
-	tmp = list;
+	/*tmp = list;
 	if (ft_strchr(flag, 'R'))
 		while (tmp)
 		{
@@ -32,7 +46,7 @@ int	ft_ls(char *flag, char *arg)
 				free(join);
 			}
 			tmp = tmp->next;
-		}
+		}*/
 	if (list)
 		ft_alstdel(list);
 	return (1);
