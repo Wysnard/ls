@@ -67,7 +67,7 @@ void	ft_printlst(t_list *list, char *flag)
 			max = ft_total(list);
 		while (list)
 		{
-			printl(list, max);
+			ft_printl(list, max);
 			list = list->next;
 		}
 	}
