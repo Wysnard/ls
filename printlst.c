@@ -28,7 +28,7 @@ void	ft_printfcontent(info *inf, char *arg)
 	ft_printf("%s", inf->dir->d_name);
 	if (inf->dir->d_type == DT_LNK)
 	{
-		ret = readlink(join = ft_strtrijoin(arg, "/", f->dir->d_name), buf, 255);
+		ret = readlink(join = ft_strtrijoin(arg, "/", inf->dir->d_name), buf, 255);
 		buf[ret] = '\0';
 		ft_printf(" -> %s", buf);
 		free (join);
@@ -36,7 +36,7 @@ void	ft_printfcontent(info *inf, char *arg)
 	ft_putchar('\n');
 }
 
-void ft_printl(t_list *list, int max)
+void ft_printl(t_list *list, int max, char *arg)
 {
 	info	*inf;
 
@@ -69,7 +69,7 @@ void	ft_printlst(t_list *list, char *flag, char *arg)
 			max = ft_total(list);
 		while (list)
 		{
-			ft_printl(list, max);
+			ft_printl(list, max, arg);
 			list = list->next;
 		}
 	}
