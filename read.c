@@ -6,7 +6,7 @@ struct	stat	*ft_getst(struct dirent *dir)
 
 	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
 		exit (EXIT_FAILURE);
-	if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
+	if (dir->d_type == DT_LNK)
 		lstat(dir->d_name, buf);
 	else
 		stat(dir->d_name, buf);
@@ -25,7 +25,7 @@ int	ft_ls(char *flag, char *arg)
 	list = NULL;
 	if (!(dir = opendir(arg)))
 	{
-		write(2, "ls: cannot open directory", ft_strlen("ls: cannot open directory"));
+		write(2, "ls: cannot open directory ", ft_strlen("ls: cannot open directory "));
 		perror(arg);
 		return (0);
 	}
