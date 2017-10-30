@@ -13,7 +13,7 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		if (argv[i][0] == '-')
-			ft_strcat(flag, &argv[i][1]);
+			ft_flag(argv[i], flag);
 		else
 			ft_lstpushadd(&wait, ft_lstnew(ft_strdup(argv[i]), sizeof(argv[i])));
 		i++;

@@ -29,5 +29,6 @@ info	*createinfo(struct dirent *dir, struct stat *st);
 int	ft_total(t_list	*list);
 void	ft_mod(struct stat *buf);
 void ft_printsize(int max, struct stat *st);
+void	ft_flag(char *arg, char *flag);
 
 #endif
