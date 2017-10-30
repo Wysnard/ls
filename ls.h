@@ -20,7 +20,7 @@ typedef	struct	info
 
 int			ft_ls(char *flag, char *arg);
 struct	dirent	*direntcpy(struct dirent *dir);
-void		ft_printlst(t_list *list, char *flag);
+void	ft_printlst(t_list *list, char *flag, char *arg);
 void		ft_alstdel(t_list *list);
 void		ft_uid(struct stat *buf);
 void		ft_gid(struct stat *buf);

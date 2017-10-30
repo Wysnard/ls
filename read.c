@@ -40,7 +40,7 @@ int	ft_ls(char *flag, char *arg)
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
-	ft_printlst(list, flag);
+	ft_printlst(list, flag, arg);
 	tmp = list;
 	if (ft_strchr(flag, 'R'))
 		while (tmp)

@@ -19,18 +19,19 @@ void	ft_filetype(struct dirent *dir)
 		ft_putchar('s');
 }
 
-void	ft_printfcontent(info *inf)
+void	ft_printfcontent(info *inf, char *arg)
 {
 	char	buf[256];
 	int	ret;
+	char	*join;
 
 	ft_printf("%s", inf->dir->d_name);
 	if (inf->dir->d_type == DT_LNK)
 	{
-		ft_putnbr(inf->dir->d_type);
-		ret = readlink(inf->dir->d_name, buf, 255);
+		ret = readlink(join = ft_strtrijoin(arg, "/", f->dir->d_name), buf, 255);
 		buf[ret] = '\0';
 		ft_printf(" -> %s", buf);
+		free (join);
 	}
 	ft_putchar('\n');
 }
@@ -46,10 +47,10 @@ void ft_printl(t_list *list, int max)
 	ft_gid(inf->st);
 	ft_printsize(max, inf->st);
 	ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
-	ft_printfcontent(inf);
+	ft_printfcontent(inf, arg);
 }
 
-void	ft_printlst(t_list *list, char *flag)
+void	ft_printlst(t_list *list, char *flag, char *arg)
 {
 	info		*inf;
 	struct	dirent	*entry;
