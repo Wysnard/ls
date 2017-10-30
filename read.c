@@ -6,9 +6,9 @@ struct	stat	*ft_getst(struct dirent *dir)
 
 	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
 		exit (EXIT_FAILURE);
-	if (dir->d_type == DT_LNK)
+	/*if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
 		lstat(dir->d_name, buf);
-	else
+	else*/
 		stat(dir->d_name, buf);
 	return (buf);
 }
