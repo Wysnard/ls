@@ -1,6 +1,6 @@
 #ifndef	__LS_H__
 #define	__LS_H__
-#define OPENERR "ls: cannot open directory "
+#define OPENERR "ls: cannot open directory '"
 
 #include "libft.h"
 #include <sys/stat.h>

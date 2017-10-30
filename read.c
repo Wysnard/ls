@@ -28,7 +28,8 @@ int	ft_ls(char *flag, char *arg)
 	if (!(dir = opendir(arg)))
 	{
 		write(2, OPENERR, ft_strlen(OPENERR));
-		perror(arg);
+		write(2, arg, ft_strlen(arg));
+		perror("'");
 		return (0);
 	}
 	while (entry = readdir(dir))
