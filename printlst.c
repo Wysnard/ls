@@ -34,26 +34,25 @@ void	ft_printfcontent(info *inf)
 	ft_putchar('\n');
 }
 
-void ft_printsize(int max, struct stat *st)
+void ft_printl(t_list *list, int max)
 {
-	int	i;
+	info	*inf;
 
-	i = ft_intlen(st->st_size, 10);
-	if (!i)
-		max--;
-	while (i < max)
-	{
-		ft_putchar(' ');
-		i++;
-	}
-	ft_printf("%d ", st->st_size);
+	inf = (info *)list->content;
+	ft_filetype(inf->dir);
+	ft_mod(inf->st);
+	ft_uid(inf->st);
+	ft_gid(inf->st);
+	ft_printsize(max, inf->st);
+	ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
+	ft_printfcontent(inf);
 }
 
 void	ft_printlst(t_list *list, char *flag)
 {
-	info	*inf;
+	info		*inf;
 	struct	dirent	*entry;
-	int	max;
+	int		max;
 
 	if (!ft_strchr(flag, 'l'))
 		while (list)
@@ -68,14 +67,7 @@ void	ft_printlst(t_list *list, char *flag)
 			max = ft_total(list);
 		while (list)
 		{
-			inf = (info *)list->content;
-			ft_filetype(inf->dir);
-			ft_mod(inf->st);
-			ft_uid(inf->st);
-			ft_gid(inf->st);
-			ft_printsize(max, inf->st);
-			ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
-			ft_printfcontent(inf);
+			printl(list, max);
 			list = list->next;
 		}
 	}

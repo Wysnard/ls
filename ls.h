@@ -27,5 +27,6 @@ void		ft_strmod(mode_t mode, char *buf);
 info	*createinfo(struct dirent *dir, struct stat *st);
 int	ft_total(t_list	*list);
 void	ft_mod(struct stat *buf);
+void ft_printsize(int max, struct stat *st);
 
 #endif
