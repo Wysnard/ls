@@ -39,7 +39,7 @@ void ft_printsize(int max, struct stat *st)
 	int	i;
 
 	i = ft_intlen(st->st_size, 10);
-	while (i < max)
+	while ((i) ? i < max : i < max - 1)
 	{
 		ft_putchar(' ');
 		i++;
