@@ -25,7 +25,8 @@ int	ft_ls(char *flag, char *arg)
 	list = NULL;
 	if (!(dir = opendir(arg)))
 	{
-		ft_printf("%s\n", strerror(errno));
+		write(2, "ls: cannot open directory", ft_strlen("ls: cannot open directory"));
+		perror(arg);
 		return (0);
 	}
 	while (entry = readdir(dir))
