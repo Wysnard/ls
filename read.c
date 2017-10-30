@@ -1,15 +1,16 @@
 #include "ls.h"
 
-struct	stat	*ft_getst(struct dirent *dir)
+struct	stat	*ft_getst(struct dirent *dir, char *arg)
 {
 	struct	stat	*buf;
+	char	*join;
 
 	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
 		exit (EXIT_FAILURE);
-	/*if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
-		lstat(dir->d_name, buf);
-	else*/
-		stat(dir->d_name, buf);
+	if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
+		lstat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
+	else
+		stat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
 	return (buf);
 }
 
@@ -31,7 +32,7 @@ int	ft_ls(char *flag, char *arg)
 	}
 	while (entry = readdir(dir))
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry)), sizeof(*inf)));
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(*inf)));
 	closedir(dir);
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
