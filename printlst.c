@@ -34,10 +34,24 @@ void	ft_printfcontent(info *inf)
 	ft_putchar('\n');
 }
 
+void ft_printsize(int max, struct stat *st)
+{
+	int	i;
+
+	i = ft_intlen(st->st_size, 10);
+	while (i < max)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+	ft_printf("%d ", st->st_size);
+}
+
 void	ft_printlst(t_list *list, char *flag)
 {
 	info	*inf;
 	struct	dirent	*entry;
+	int	max;
 
 	if (!ft_strchr(flag, 'l'))
 		while (list)
@@ -49,7 +63,7 @@ void	ft_printlst(t_list *list, char *flag)
 	else
 	{
 		if (list)
-			ft_total(list);
+			max = ft_total(list);
 		while (list)
 		{
 			inf = (info *)list->content;
@@ -57,8 +71,8 @@ void	ft_printlst(t_list *list, char *flag)
 			ft_mod(inf->st);
 			ft_uid(inf->st);
 			ft_gid(inf->st);
-			ft_printf("%d ", inf->st->st_size);
-			ft_printf("%.13s ", &ctime(&inf->st->st_mtime)[4]);
+			ft_printsize(max, inf->st);
+			ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
 			ft_printfcontent(inf);
 			list = list->next;
 		}
