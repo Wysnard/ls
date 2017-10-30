@@ -18,6 +18,6 @@ int	ft_total(t_list	*list)
 		total += inf->st->st_blocks;
 		tmp = tmp->next;
 	}
-	ft_printf("total %u\n", total);
+	ft_printf("total %d\n", total);
 	return (max);
 }

@@ -6,11 +6,12 @@ struct	stat	*ft_getst(struct dirent *dir, char *arg)
 	char	*join;
 
 	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
 		lstat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
 	else
 		stat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
+	free(join);
 	return (buf);
 }
 
