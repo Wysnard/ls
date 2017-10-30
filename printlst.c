@@ -27,6 +27,7 @@ void	ft_printfcontent(info *inf)
 	ft_printf("%s", inf->dir->d_name);
 	if (inf->dir->d_type == DT_LNK)
 	{
+		ft_putnbr(inf->dir->d_type);
 		ret = readlink(inf->dir->d_name, buf, 255);
 		buf[ret] = '\0';
 		ft_printf(" -> %s", buf);
