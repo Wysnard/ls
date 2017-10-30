@@ -27,7 +27,7 @@ int	ft_ls(char *flag, char *arg)
 	list = NULL;
 	if (!(dir = opendir(arg)))
 	{
-		write(2, "ls: cannot open directory ", ft_strlen("ls: cannot open directory "));
+		write(2, OPENERR, ft_strlen(OPENERR));
 		perror(arg);
 		return (0);
 	}
