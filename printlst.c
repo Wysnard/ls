@@ -47,6 +47,7 @@ void ft_printl(t_list *list, int max, char *arg)
 	ft_gid(inf->st);
 	ft_printsize(max, inf->st);
 	ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
+	ft_printf("%lld", inf->st->st_mtime);
 	ft_printfcontent(inf, arg);
 }
 

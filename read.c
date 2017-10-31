@@ -30,11 +30,11 @@ int	ft_ls(char *flag, char *arg)
 		write(2, OPENERR, ft_strlen(OPENERR));
 		write(2, arg, ft_strlen(arg));
 		perror("'");
-		return (0);
+		return (-1);
 	}
 	while (entry = readdir(dir))
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(*inf)));
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
 	closedir(dir);
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
@@ -55,7 +55,5 @@ int	ft_ls(char *flag, char *arg)
 			}
 			tmp = tmp->next;
 		}
-	//if (list)
-		//ft_alstdel(list);
 	return (1);
 }
