@@ -26,6 +26,18 @@ static t_list	*ft_lstmerge(t_list *a, t_list *b)
 	return (result);
 }
 
+void	ft_prtlst(t_list *list)
+{
+	info	*inf;
+
+	while (list)
+	{
+		inf = (info *)list->content;
+		ft_printf("%s\n", inf->dir->d_name);
+		list = list->next;
+	}
+}
+
 void	ft_lstmergesort(t_list **list)
 {
 	t_list	*head;
@@ -37,8 +49,10 @@ void	ft_lstmergesort(t_list **list)
 		return ;
 	ft_lstfrontbacksplit(head, &a, &b);
 
-	ft_lstmergesort(&a);
-	ft_lstmergesort(&b);
+	ft_prtlst(a);
+	ft_prtlst(b);
+	//ft_lstmergesort(&a);
+	//ft_lstmergesort(&b);
 
-	*list = ft_lstmerge(a, b);
+	//*list = ft_lstmerge(a, b);
 }
