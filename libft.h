@@ -13,6 +13,12 @@ typedef struct	s_list
 	struct s_list	*next;
 }		t_list;
 
+typedef	struct	Pile
+{
+	t_list	*first;
+	void	*info;
+}								Pile;
+
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 size_t	ft_strlen(const char *s);
@@ -79,8 +85,19 @@ void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void	ft_lstpushadd(t_list **alst, t_list *new);
 void	ft_lstrev(t_list **list);
+int	ft_lstrotate(t_list **alst);
+int	ft_lstreverserotate(t_list **alst);
+int	ft_lstlen(t_list *list);
+void	ft_lstfrontbacksplit(t_list *src, t_list **a, t_list **b);
+
+void ft_pileadd(Pile *pile, void *info, size_t content_size);
+void	*ft_piledel(Pile *pile);
+Pile	*ft_pileinit(void);
+void	ft_pilepushadd(Pile *pile, void *info, size_t content_size);
 
 int	ft_printf(const char *arg1, ...);
+
+int	get_next_line(const int fd, char **line);
 
 char	*ft_strndup(const char *s, size_t n);
 int	ft_power(int nb, int power);
@@ -98,5 +115,6 @@ intmax_t	ft_atoim(const char *str);
 char	*ft_strtrijoin(char *s1, char *s2, char *s3);
 int	ft_intlen(int nb, int base);
 void	ft_swap(void **s1, void **s2);
+char	*ft_lsttoa(t_list *list);
 
 #endif
