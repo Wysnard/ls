@@ -49,8 +49,8 @@ void	ft_lstmergesort(t_list **list)
 		return ;
 	ft_lstfrontbacksplit(head, &a, &b);
 
-	ft_prtlst(a);
-	ft_prtlst(b);
+	//ft_prtlst(a);
+	//ft_prtlst(b);
 	//ft_lstmergesort(&a);
 	//ft_lstmergesort(&b);
 
