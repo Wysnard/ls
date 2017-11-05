@@ -1,6 +1,6 @@
 #include "ls.h"
 
-void	ft_options(char *flag, t_list **list)
+void	ft_options(char *flag, char *arg, t_list **list)
 {
 	if (ft_strchr(flag, 't'))
 		ft_lstmergesort(list);

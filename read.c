@@ -33,8 +33,9 @@ int	ft_ls(char *flag, char *arg)
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
 			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
 	closedir(dir);
-	ft_options(flag, &list);
+	ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
-	ft_recurss(list);
+	if (ft_strchr(flag, 'R'))
+		ft_recurss(list);
 	return (1);
 }
