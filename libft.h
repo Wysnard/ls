@@ -88,7 +88,7 @@ void	ft_lstrev(t_list **list);
 int	ft_lstrotate(t_list **alst);
 int	ft_lstreverserotate(t_list **alst);
 int	ft_lstlen(t_list *list);
-void	ft_lstfrontbacksplit(t_list *src, t_list **a, t_list **b);
+void ft_lstfrontbacksplit(t_list* source, t_list** frontRef, t_list** backRef);
 
 void ft_pileadd(Pile *pile, void *info, size_t content_size);
 void	*ft_piledel(Pile *pile);
