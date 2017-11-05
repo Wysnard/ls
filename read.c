@@ -38,7 +38,7 @@ int	ft_ls(char *flag, char *arg)
 	closedir(dir);
 	if (ft_strchr(flag, 't'))
 		ft_lstmergesort(&list);
-	/*if (ft_strchr(flag, 'R'))
+	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
 		ft_lstrev(&list);
@@ -56,6 +56,6 @@ int	ft_ls(char *flag, char *arg)
 				free(join);
 			}
 			tmp = tmp->next;
-		}*/
+		}
 	return (1);
 }
