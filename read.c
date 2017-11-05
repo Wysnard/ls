@@ -36,6 +36,6 @@ int	ft_ls(char *flag, char *arg)
 	ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
 	if (ft_strchr(flag, 'R'))
-		ft_recurss(list);
+		ft_recurss(list, arg, flag);
 	return (1);
 }

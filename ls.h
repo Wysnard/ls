@@ -32,6 +32,6 @@ void ft_printsize(int max, struct stat *st);
 void	ft_flag(char *arg, char *flag);
 void	ft_lstmergesort(t_list **list);
 void	ft_options(char *flag, char *arg, t_list **list);
-void	ft_recurss(t_list *list, char *arg);
+void	ft_recurss(t_list *list, char *arg, char *flag);
 
 #endif

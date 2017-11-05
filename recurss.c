@@ -1,6 +1,6 @@
 #include "ls.h"
 
-void	ft_recurss(t_list *list, char *arg)
+void	ft_recurss(t_list *list, char *arg, char *flag)
 {
 	t_list		*tmp;
 	info		*inf;
