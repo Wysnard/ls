@@ -1,5 +1,15 @@
 #include "ls.h"
 
+void	ft_options(char *flag, t_list **list)
+{
+	if (ft_strchr(flag, 't'))
+		ft_lstmergesort(list);
+	if (ft_strchr(flag, 'R'))
+		ft_printf("%s:\n", arg);
+	if (ft_strchr(flag, 'r'))
+		ft_lstrev(list);
+}
+
 void	ft_flag(char *arg, char *flag)
 {
 	if (ft_strchr(arg, 'l') && !ft_strchr(flag, 'l'))
