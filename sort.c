@@ -45,7 +45,7 @@ void	ft_lstmergesort(t_list **list)
 	t_list	*b;
 
 	head = *list;
-	if (!head || !head->next)
+	if (head == NULL || head->next == NULL)
 		return ;
 	ft_lstfrontbacksplit(head, &a, &b);
 
