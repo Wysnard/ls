@@ -36,6 +36,8 @@ int	ft_ls(char *flag, char *arg)
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
 			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
 	closedir(dir);
+	if (ft_strchr(flag, 't'))
+		ft_lstmergesort(&list);
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
 	if (ft_strchr(flag, 'r'))
