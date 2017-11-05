@@ -51,8 +51,8 @@ void	ft_lstmergesort(t_list **list)
 
 	//ft_prtlst(a);
 	//ft_prtlst(b);
-	//ft_lstmergesort(&a);
-	//ft_lstmergesort(&b);
+	ft_lstmergesort(&a);
+	ft_lstmergesort(&b);
 
-	//*list = ft_lstmerge(a, b);
+	*list = ft_lstmerge(a, b);
 }
