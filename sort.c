@@ -13,7 +13,7 @@ static t_list	*ft_lstmerge(t_list *a, t_list *b)
 		return (a);
 	ai = (info *)a->content;
 	bi = (info *)b->content;
-	if (ai->st->st_mtime <= bi->st->st_mtime)
+	if (ai->st->st_mtime >= bi->st->st_mtime)
 	{
 		result = a;
 		result->next = ft_lstmerge(a->next, b);
