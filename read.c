@@ -11,7 +11,6 @@ struct	stat	*ft_getst(struct dirent *dir, char *arg)
 		lstat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
 	else
 		stat(join = ft_strtrijoin(arg, "/", dir->d_name), buf);
-	free(join);
 	return (buf);
 }
 
