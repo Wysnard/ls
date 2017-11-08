@@ -40,12 +40,14 @@ void ft_printl(t_list *list, int max, char *arg)
 {
 	info	*inf;
 
+	//Faire les majeurs et mineurs de /dev
 	inf = (info *)list->content;
 	ft_filetype(inf->dir);
 	ft_mod(inf->st);
 	ft_uid(inf->st);
 	ft_gid(inf->st);
 	ft_printsize(max, inf->st);
+	//gerer les date de plus de 6mois
 	ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
 	ft_printfcontent(inf, arg);
 }
