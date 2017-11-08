@@ -23,3 +23,16 @@ void	ft_flag(char *arg, char *flag)
 	if (ft_strchr(arg, 't') && !ft_strchr(flag, 't'))
 		ft_strcat(flag, "t");
 }
+
+void	ft_get_flag(int argc, char **argv, char *flag)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] == '-')
+			ft_flag(argv[i], flag);
+		i++;
+	}
+}

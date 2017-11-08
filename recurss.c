@@ -15,7 +15,6 @@ void	ft_recurss(t_list *list, char *arg, char *flag)
 			ft_putchar('\n');
 			join = ft_strtrijoin(arg, "/", inf->dir->d_name);
 			ft_ls(flag, join);
-			free(join);
 		}
 		tmp = tmp->next;
 	}
