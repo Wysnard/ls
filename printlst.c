@@ -45,12 +45,12 @@ void ft_printl(struct dirent *entry, int max, char *arg)
 		lstat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
 	else
 		stat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
-	ft_mod(buf);
-	ft_uid(buf);
-	ft_gid(buf);
-	ft_printsize(max, buf);
+	ft_mod(&buf);
+	ft_uid(&buf);
+	ft_gid(&buf);
+	ft_printsize(max, &buf);
 	//gerer les date de plus de 6mois
-	ft_printf("%.12s ", &ctime(&buf->st_mtime)[4]);
+	ft_printf("%.12s ", &ctime(&buf.st_mtime)[4]);
 	ft_printfcontent(entry, arg);
 }
 
