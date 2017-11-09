@@ -28,18 +28,11 @@ int	ft_ls(char *flag, char *arg)
 		perror("'");
 		return (-1);
 	}
-	if (ft_strchr(flag, 'r') || ft_strchr(flag, 'l') || ft_strchr(flag, 't'))
-	{
-		while (entry = readdir(dir))
-			if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-				ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
-	}
-	else
-		while (entry = readdir(dir))
-			ft_printf("%s\n", entry->d_name);
+	while (entry = readdir(dir))
+		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
+			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
 	ft_options(flag, arg, &list);
-	if (ft_strchr(flag, 'r') || ft_strchr(flag, 'l') || ft_strchr(flag, 't'))
-		ft_printlst(list, flag, arg);
+	ft_printlst(list, flag, arg);
 	if (ft_strchr(flag, 'R'))
 		ft_recurss(list, arg, flag);
 	return (1);
