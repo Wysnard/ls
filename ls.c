@@ -15,9 +15,9 @@ struct	stat	*ft_getst(struct dirent *dir, char *arg)
 
 int	ft_ls(char *flag, char *arg)
 {
-	DIR		*dir;
+	DIR			*dir;
 	struct	dirent	*entry;
-	t_list		*list;
+	t_list			*list;
 
 	list = NULL;
 	if (!(dir = opendir(arg)))
@@ -30,10 +30,18 @@ int	ft_ls(char *flag, char *arg)
 	}
 	while (entry = readdir(dir))
 		if (entry->d_name[0] != '.' || ft_strchr(flag, 'a'))
-			ft_lstpushadd(&list ,ft_lstnew(createinfo(direntcpy(entry), ft_getst(entry, arg)), sizeof(info *)));
-	ft_options(flag, arg, &list);
+		{
+			if (!ft_strchr(flag, 't') || !ft_strchr(flag, 'r'))
+			{
+				if (ft_strchr(flag, 'R') && entry->d_type == DT_DIR)
+					ft_lstpushadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
+				if (!ft_strchr(flag, 'l'))
+					ft_printf("%s\n", entry->d_name);
+			}
+		}
+	/*ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
 	if (ft_strchr(flag, 'R'))
-		ft_recurss(list, arg, flag);
+		ft_recurss(list, arg, flag);*/
 	return (1);
 }
