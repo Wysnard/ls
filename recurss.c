@@ -12,7 +12,7 @@ void	ft_recurss(t_list *list, char *arg, char *flag)
 		if (inf->dir->d_type == 4 && !ft_strequ(inf->dir->d_name, ".") && !ft_strequ(inf->dir->d_name, ".."))
 		{
 			ft_putchar('\n');
-			ft_ls(flag, ft_strtrijoin(arg, "/", inf->dir->d_name));
+			ft_ls(flag, ft_strjoin(ft_strjoin(arg, "/"), inf->dir->d_name));
 		}
 		tmp = tmp->next;
 	}

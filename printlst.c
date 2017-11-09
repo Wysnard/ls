@@ -28,10 +28,9 @@ void	ft_printfcontent(info *inf, char *arg)
 	ft_printf("%s", inf->dir->d_name);
 	if (inf->dir->d_type == DT_LNK)
 	{
-		ret = readlink(join = ft_strtrijoin(arg, "/", inf->dir->d_name), buf, 255);
+		ret = readlink(ft_strjoin(ft_strjoin(arg, "/"), inf->dir->d_name), buf, 255);
 		buf[ret] = '\0';
 		ft_printf(" -> %s", buf);
-		free (join);
 	}
 	ft_putchar('\n');
 }

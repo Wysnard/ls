@@ -7,9 +7,9 @@ struct	stat	*ft_getst(struct dirent *dir, char *arg)
 	if (!(buf = (struct stat *)malloc(sizeof(struct stat))))
 		exit(EXIT_FAILURE);
 	if (dir->d_type == DT_LNK || dir->d_type == DT_UNKNOWN)
-		lstat(ft_strtrijoin(arg, "/", dir->d_name), buf);
+		lstat(ft_strjoin(ft_strjoin(arg, "/"), dir->d_name), buf);
 	else
-		stat(ft_strtrijoin(arg, "/", dir->d_name), buf);
+		stat(ft_strjoin(ft_strjoin(arg, "/"), dir->d_name), buf);
 	return (buf);
 }
 
