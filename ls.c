@@ -24,7 +24,7 @@ int	ft_ls(char *flag, char *arg)
 		ft_total(arg);
 	if (!(dir = opendir(arg)))
 	{
-		ft_openerr();
+		ft_openerr(arg);
 		return (-1);
 	}
 	while (entry = readdir(dir))

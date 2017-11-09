@@ -12,7 +12,7 @@ int	ft_total(char *arg)
 	max = 0;
 	if (!(dir = opendir(arg)))
 	{
-		ft_openerr();
+		ft_openerr(arg);
 		return (-1);
 	}
 	while (entry = readdir(dir))
