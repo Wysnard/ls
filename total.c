@@ -27,5 +27,5 @@ int	ft_total(char *arg)
 	}
 	ft_printf("total %d\n", total);
 	closedir(dir);
-	return (total);
+	return (max);
 }
