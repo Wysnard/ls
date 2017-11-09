@@ -51,7 +51,7 @@ void ft_printl(t_list *list, int max, char *arg)
 	ft_printfcontent(inf, arg);
 }
 
-void	ft_printlst(t_list *list, char *flag, char *arg)
+/*void	ft_printlst(t_list *list, char *flag, char *arg)
 {
 	info		*inf;
 	struct	dirent	*entry;
@@ -74,4 +74,4 @@ void	ft_printlst(t_list *list, char *flag, char *arg)
 			list = list->next;
 		}
 	}
-}
+}*/

@@ -20,14 +20,11 @@ int	ft_ls(char *flag, char *arg)
 	t_list			*list;
 
 	list = NULL;
-	dir = opendir(arg);
-	closedir(dir);
+	if (ft_strchr(flag, 'l'))
+		ft_total(arg);
 	if (!(dir = opendir(arg)))
 	{
-	//gerer les differents message d'erreur car la tu fais pas les EACCESS
-		write(2, OPENERR, ft_strlen(OPENERR));
-		write(2, arg, ft_strlen(arg));
-		perror("'");
+		ft_openerr();
 		return (-1);
 	}
 	while (entry = readdir(dir))

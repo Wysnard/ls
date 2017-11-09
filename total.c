@@ -1,23 +1,31 @@
 #include "ls.h"
 
-int	ft_total(t_list	*list)
+int	ft_total(char *arg)
 {
-	t_list	*tmp;
-	info	*inf;
-	unsigned int	total;
-	int	max;
+	DIR		*dir;
+	struct	dirent	*entry;
+	int		max;
+	int		total;
+	struct	stat	buf;
 
-	tmp = list;
 	total = 0;
 	max = 0;
-	while (tmp)
+	if (!(dir = opendir(arg)))
 	{
-		inf = (info *)tmp->content;
-		if (max < ft_intlen(inf->st->st_size, 10))
-			max = ft_intlen(inf->st->st_size, 10);
-		total += inf->st->st_blocks;
-		tmp = tmp->next;
+		ft_openerr();
+		return (-1);
+	}
+	while (entry = readdir(dir))
+	{
+		if (entry->d_type == DT_LNK || entry->d_type == DT_UNKNOWN)
+			lstat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), buf);
+		else
+			stat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), buf);
+		if (max < ft_intlen(buf->st_size, 10))
+			max = ft_intlen(buf->st_size, 10);
+		total += buf->st_blocks;
 	}
 	ft_printf("total %d\n", total);
-	return (max);
+	closedir(dir);
+	return (total);
 }
