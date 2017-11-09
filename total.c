@@ -18,12 +18,12 @@ int	ft_total(char *arg)
 	while (entry = readdir(dir))
 	{
 		if (entry->d_type == DT_LNK || entry->d_type == DT_UNKNOWN)
-			lstat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), buf);
+			lstat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
 		else
-			stat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), buf);
-		if (max < ft_intlen(buf->st_size, 10))
-			max = ft_intlen(buf->st_size, 10);
-		total += buf->st_blocks;
+			stat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
+		if (max < ft_intlen(buf.st_size, 10))
+			max = ft_intlen(buf.st_size, 10);
+		total += buf.st_blocks;
 	}
 	ft_printf("total %d\n", total);
 	closedir(dir);
