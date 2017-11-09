@@ -19,36 +19,39 @@ void	ft_filetype(struct dirent *dir)
 		ft_putchar('s');
 }
 
-void	ft_printfcontent(info *inf, char *arg)
+static	void	ft_printfcontent(struct dirent *entry, char *arg)
 {
 	char	buf[256];
 	int	ret;
 	char	*join;
 
-	ft_printf("%s", inf->dir->d_name);
-	if (inf->dir->d_type == DT_LNK)
+	ft_printf("%s", entry->d_name);
+	if (entry->d_type == DT_LNK)
 	{
-		ret = readlink(ft_strjoin(ft_strjoin(arg, "/"), inf->dir->d_name), buf, 255);
+		ret = readlink(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), buf, 255);
 		buf[ret] = '\0';
 		ft_printf(" -> %s", buf);
 	}
 	ft_putchar('\n');
 }
 
-void ft_printl(t_list *list, int max, char *arg)
+void ft_printl(struct dirent *entry, int max, char *arg)
 {
-	info	*inf;
+	struct	stat	buf;
 
 	//Faire les majeurs et mineurs de /dev
-	inf = (info *)list->content;
-	ft_filetype(inf->dir);
-	ft_mod(inf->st);
-	ft_uid(inf->st);
-	ft_gid(inf->st);
-	ft_printsize(max, inf->st);
+	ft_filetype(entry);
+	if (entry->d_type == DT_LNK || entry->d_type == DT_UNKNOWN)
+		lstat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
+	else
+		stat(ft_strjoin(ft_strjoin(arg, "/"), entry->d_name), &buf);
+	ft_mod(buf);
+	ft_uid(buf);
+	ft_gid(buf);
+	ft_printsize(max, buf);
 	//gerer les date de plus de 6mois
-	ft_printf("%.12s ", &ctime(&inf->st->st_mtime)[4]);
-	ft_printfcontent(inf, arg);
+	ft_printf("%.12s ", &ctime(&buf->st_mtime)[4]);
+	ft_printfcontent(entry, arg);
 }
 
 /*void	ft_printlst(t_list *list, char *flag, char *arg)

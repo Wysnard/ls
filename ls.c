@@ -18,10 +18,12 @@ int	ft_ls(char *flag, char *arg)
 	DIR			*dir;
 	struct	dirent	*entry;
 	t_list			*list;
+	int			max;
 
 	list = NULL;
 	if (ft_strchr(flag, 'l'))
-		ft_total(arg);
+		if ((max = ft_total(arg)) < 0)
+			return (-1);
 	if (!(dir = opendir(arg)))
 	{
 		ft_openerr(arg);
@@ -34,9 +36,10 @@ int	ft_ls(char *flag, char *arg)
 			{
 				if (ft_strchr(flag, 'R') && entry->d_type == DT_DIR)
 					ft_lstpushadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
-				//if (ft_strchr(flag, 'l'))
-
-				ft_printf("%s\n", entry->d_name);
+				if (ft_strchr(flag, 'l'))
+					ft_printl(entry, max, arg);
+				else
+					ft_printf("%s\n", entry->d_name);
 			}
 		}
 	/*ft_options(flag, arg, &list);

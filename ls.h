@@ -35,5 +35,6 @@ void	ft_options(char *flag, char *arg, t_list **list);
 void	ft_recurss(t_list *list, char *arg, char *flag);
 void	ft_get_flag(int argc, char **argv, char *flag);
 void	ft_openerr(char *arg);
+void ft_printl(struct dirent *entry, int max, char *arg);
 
 #endif
