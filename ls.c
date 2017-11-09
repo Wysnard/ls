@@ -20,6 +20,8 @@ int	ft_ls(char *flag, char *arg)
 	t_list			*list;
 
 	list = NULL;
+	dir = opendir(arg);
+	closedir(dir);
 	if (!(dir = opendir(arg)))
 	{
 	//gerer les differents message d'erreur car la tu fais pas les EACCESS
@@ -35,8 +37,9 @@ int	ft_ls(char *flag, char *arg)
 			{
 				if (ft_strchr(flag, 'R') && entry->d_type == DT_DIR)
 					ft_lstpushadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
-				if (!ft_strchr(flag, 'l'))
-					ft_printf("%s\n", entry->d_name);
+				//if (ft_strchr(flag, 'l'))
+
+				ft_printf("%s\n", entry->d_name);
 			}
 		}
 	/*ft_options(flag, arg, &list);
