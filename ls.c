@@ -31,25 +31,20 @@ int	ft_ls(char *flag, char *arg)
 					ft_printf("%s\n", entry->d_name);
 			}
 			else if (ft_strchr(flag, 't'))
-			{
-				//if (!ft_strchr(flag, 'r'))
-					ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &ft_compare);
-				//else
-					//ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &ft_revcompare);
-			}
+				ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &ft_compare);
 			else if (ft_strchr(flag, 'r'))
 				ft_lstadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
 		}
-	if (tr)
-	{
-		if (ft_strchr(flag, 'r'))
-			ft_btree_rev_infix(tr, &ft_btrprt);
-		else
-			ft_btree_apply_infix(tr, &ft_btrprt);
-	}
+	if (ft_strchr(flag, 'r'))
+		ft_btree_rev_infix(tr, &ft_btrprt);
+	else
+		ft_btree_apply_infix(tr, &ft_btrprt);
+	if (ft_strchr(flag, 'r') && list)
+		ft_lstiter(list, &prtlst);
 	/*ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
 	if (ft_strchr(flag, 'R'))
 		ft_recurss(list, arg, flag);*/
+	ft_btreedel(tr);
 	return (1);
 }
