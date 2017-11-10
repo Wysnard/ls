@@ -52,3 +52,13 @@ int	ft_compare(void *s1, void *s2)
 	inf2 = (info *)s2;
 	return (inf2->st->st_mtime - inf1->st->st_mtime);
 }
+
+int	ft_revcompare(void *s1, void *s2)
+{
+	info	*inf1;
+	info	*inf2;
+
+	inf1 = (info *)s1;
+	inf2 = (info *)s2;
+	return (inf1->st->st_mtime - inf2->st->st_mtime);
+}

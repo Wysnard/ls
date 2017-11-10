@@ -33,7 +33,9 @@ int	ft_ls(char *flag, char *arg)
 			else if (ft_strchr(flag, 't'))
 			{
 				if (!ft_strchr(flag, 'r'))
-					ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &!ft_compare);
+					ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &ft_compare);
+				else
+					ft_btreeinsert(&tr, createinfo(direntcpy(entry), ft_getst(entry, arg)), &ft_revcompare);
 			}
 			else if (ft_strchr(flag, 'r'))
 				ft_lstadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
