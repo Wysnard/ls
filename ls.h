@@ -39,5 +39,6 @@ void ft_printl(struct dirent *entry, int max, char *arg);
 void	ft_st(struct dirent *dir, char *arg, struct stat *buf);
 struct	stat	*ft_getst(struct dirent *dir, char *arg);
 int	ft_compare(void *s1, void *s2);
+void	ft_btrprt(void *content);
 
 #endif

@@ -78,3 +78,11 @@ void ft_printl(struct dirent *entry, int max, char *arg)
 		}
 	}
 }*/
+
+void	ft_btrprt(void *content)
+{
+	info	*inf;
+
+	inf = (info *)content;
+	ft_printf("%s\n", inf->dir->d_name);
+}
