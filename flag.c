@@ -2,11 +2,9 @@
 
 void	ft_options(char *flag, char *arg, t_list **list)
 {
-	if (ft_strchr(flag, 't'))
-		ft_lstmergesort(list);
 	if (ft_strchr(flag, 'R'))
 		ft_printf("%s:\n", arg);
-	if (ft_strchr(flag, 'r'))
+	if (ft_strchr(flag, 'r') && ft_strchr(flag, 't'))
 		ft_lstrev(list);
 }
 

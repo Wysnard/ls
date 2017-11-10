@@ -1,10 +1,10 @@
-#ifndef __LIBFT_H__
-#define __LIBFT_H__
+#ifndef LIBFT_H
+# define LIBFT_H
 
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdint.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdint.h>
 
 typedef struct	s_list
 {
@@ -13,11 +13,19 @@ typedef struct	s_list
 	struct s_list	*next;
 }		t_list;
 
-typedef	struct	Pile
+typedef	struct	s_Pile
 {
 	t_list	*first;
 	void	*info;
-}								Pile;
+}								t_Pile;
+
+typedef	struct	s_btree
+{
+	struct	s_btree	*right;
+	struct	s_btree	*left;
+	void	*content;
+	size_t	content_size;
+}								t_btree;
 
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
@@ -90,14 +98,23 @@ int	ft_lstreverserotate(t_list **alst);
 int	ft_lstlen(t_list *list);
 void ft_lstfrontbacksplit(t_list* source, t_list** frontRef, t_list** backRef);
 
-void ft_pileadd(Pile *pile, void *info, size_t content_size);
-void	*ft_piledel(Pile *pile);
-Pile	*ft_pileinit(void);
-void	ft_pilepushadd(Pile *pile, void *info, size_t content_size);
+void ft_pileadd(t_Pile *pile, void *info, size_t content_size);
+void	*ft_piledel(t_Pile *pile);
+t_Pile	*ft_pileinit(void);
+void	ft_pilepushadd(t_Pile *pile, void *info, size_t content_size);
+
+t_btree	*ft_btreecreate(void *item);
+void	ft_btreedel(t_btree *tr);
+t_btree	*ft_btreejoin(t_btree *gauche, t_btree *droite, void *item);
+void	ft_btree_apply_prefix(t_btree *root, void (*applyf)(void *));
+void	ft_btree_apply_infix(t_btree *root, void(*applyf)(void *));
+void	ft_btree_apply_suffix(t_btree *root, void(*applyf)(void *));
+void	ft_btreeinsert(t_btree **root, void *item, int (*cmpf)(void *, void *));
+int	ft_btreelvlct(t_btree *root);
 
 int	ft_printf(const char *arg1, ...);
 
-int	get_next_line(const int fd, char **line);
+int		get_next_line(const int fd, char **line);
 
 char	*ft_strndup(const char *s, size_t n);
 int	ft_power(int nb, int power);

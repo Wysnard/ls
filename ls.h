@@ -36,5 +36,8 @@ void	ft_recurss(t_list *list, char *arg, char *flag);
 void	ft_get_flag(int argc, char **argv, char *flag);
 void	ft_openerr(char *arg);
 void ft_printl(struct dirent *entry, int max, char *arg);
+void	ft_st(struct dirent *dir, char *arg, struct stat *buf);
+struct	stat	*ft_getst(struct dirent *dir, char *arg);
+int	ft_compare(void *s1, void *s2);
 
 #endif
