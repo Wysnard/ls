@@ -111,6 +111,7 @@ void	ft_btree_apply_infix(t_btree *root, void(*applyf)(void *));
 void	ft_btree_apply_suffix(t_btree *root, void(*applyf)(void *));
 void	ft_btreeinsert(t_btree **root, void *item, int (*cmpf)(void *, void *));
 int	ft_btreelvlct(t_btree *root);
+void	ft_btree_rev_infix(t_btree *root, void(*applyf)(void *));
 
 int	ft_printf(const char *arg1, ...);
 

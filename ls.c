@@ -41,7 +41,12 @@ int	ft_ls(char *flag, char *arg)
 				ft_lstadd(&list ,ft_lstnew(ft_strdup(entry->d_name), sizeof(char *)));
 		}
 	if (tr)
-		ft_btree_apply_infix(tr, &ft_btrprt);
+	{
+		if (ft_strchr(flag, 'r'))
+			ft_btree_rev_infix(tr, &ft_btrprt);
+		else
+			ft_btree_apply_infix(tr, &ft_btrprt);
+	}
 	/*ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
 	if (ft_strchr(flag, 'R'))
