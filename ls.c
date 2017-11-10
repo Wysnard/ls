@@ -39,7 +39,7 @@ int	ft_ls(char *flag, char *arg)
 		ft_btree_rev_infix(tr, &ft_btrprt);
 	else
 		ft_btree_apply_infix(tr, &ft_btrprt);
-	if (ft_strchr(flag, 'r') && list)
+	if (ft_strchr(flag, 'r'))
 		ft_lstiter(list, &prtlst);
 	/*ft_options(flag, arg, &list);
 	ft_printlst(list, flag, arg);
