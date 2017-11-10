@@ -41,6 +41,6 @@ struct	stat	*ft_getst(struct dirent *dir, char *arg);
 int	ft_compare(void *s1, void *s2);
 void	ft_btrprt(void *content);
 int	ft_revcompare(void *s1, void *s2);
-void	ft_prtlst(t_list	*elem);
+void	ft_prtlst(t_list *elem);
 
 #endif

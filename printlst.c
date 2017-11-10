@@ -87,7 +87,7 @@ void	ft_btrprt(void *content)
 	ft_printf("%s\n", inf->dir->d_name);
 }
 
-void	ft_prtlst(t_list	*elem)
+void	ft_prtlst(t_list *elem)
 {
 	char	*str;
 
